@@ -1,0 +1,100 @@
+{
+  "name": "Skill",
+  "base": "Model",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "SoftDelete": true,
+    "Updater": true
+  },
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": true
+    },
+    "skill": {
+      "type": "string"
+    },
+    "people_id": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "created_by": {
+      "type": "string"
+    },
+    "deleted_at": {
+      "type": "string"
+    },
+    "deleted_by": {
+      "type": "string"
+    },
+    "updated_at": {
+      "type": "string"
+    },
+    "updated_by": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "DENY"
+    }
+  ],
+  "methods": {
+    "createOrUpdate": {
+      "accepts": [
+        {
+          "arg": "req",
+          "type": "object",
+          "http": {
+            "source": "req"
+          }
+        },
+        {
+          "arg": "res",
+          "type": "object",
+          "http": {
+            "source": "res"
+          }
+        },
+        {"arg": "options", "type": "object", "http": "optionsFromRequest"}
+      ],
+      "returns": [
+        {
+          "arg": "status",
+          "type": "number",
+          "root": false,
+          "description": ""
+        },
+        {
+          "arg": "messages",
+          "type": "string",
+          "root": false,
+          "description": ""
+        },
+        {
+          "arg": "data",
+          "type": "object",
+          "root": false,
+          "description": ""
+        }
+      ],
+      "description": "createOrUpdate",
+      "http": [
+        {
+          "path": "/store",
+          "verb": "post"
+        }
+      ]
+    }
+  }
+}
